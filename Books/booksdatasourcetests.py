@@ -1,6 +1,6 @@
 '''
    booksdatasourcetest.py
-   Kitty Tyree and Sriya Konda, 27 September 2021
+   Kitty Tyree and Sriya Kondas, 27 September 2021
 '''
 
 import booksdatasource
