@@ -35,6 +35,8 @@ class Book:
         return self.title == other.title
 
 class BooksDataSource:
+    listOfAllAuthors = []
+    listOfAllBooks = []
     def __init__(self, books_csv_file_name):
         ''' The books CSV file format looks like this:
 
@@ -49,10 +51,7 @@ class BooksDataSource:
             suitable instance variables for the BooksDataSource object containing
             a collection of Author objects and a collection of Book objects.
         '''
-        global listOfAllAuthors
-        self.listOfAllAuthors = []
-        global ListOfAllBooks
-        self.listOfAllBooks = []
+
         file = open(books_csv_file_name)
         reader = csv.reader(file)
         for row in reader:
@@ -63,23 +62,27 @@ class BooksDataSource:
             authorAttributes = auth_string.split(' ')
             if len(authorAttributes) == 3:
                 authorFirstName, authorLastName, authorYearsString = authorAttributes[0], authorAttributes[1], authorAttributes[2]
-            if len(authorAttributes) == 4:
+            elif len(authorAttributes) == 4:
                 authorFirstName, authorLastName, authorYearsString = authorAttributes[0], authorAttributes[1] + ' ' + authorAttributes[2], authorAttributes[3]
 
 # Need to implement something about the book that has 2 authors :)
-
+            # dealing with author Year
             authorYearsString.strip('('')')
             authorYears = authorYearsString.split('-')
             birthYear = authorYears[0]
             if len(authorYears) == 2:
                 deathYear = authorYears[1]
-            authorObject = Author(authorFirstName, authorLastName, birthYear, deathYear)
+
+            authorObject = Author(authorLastName, authorFirstName, birthYear, deathYear)
             # add authorObject to listOfAllAuthors
-            self.listOfAllAuthors.append(authorObject)
+            if authorObject not in self.listOfAllAuthors:
+                self.listOfAllAuthors.append(authorObject)
 
             bookObject = Book(title, pub_year, authorObject)
+            if bookObject not in self.listOfAllBooks:
+                self.listOfAllBooks.append(bookObject)
             # add bookObject to listOfAllBooks
-            self.listOfAllBooks.append(bookObject)
+
         file.close
 
 
@@ -90,21 +93,19 @@ class BooksDataSource:
             by surname, breaking ties using given name (e.g. Ann Brontë comes before Charlotte Brontë).
         '''
         authorList = []
-        searchLower = search_text.lower()
 
-        if searchLower == '':
-            authorList = BooksDataSource.listOfAllAuthors
-        # search text is none, return all Author objects
-
+        if search_text == None:
+            authorList = self.listOfAllAuthors
         else:
-            for author in BooksDataSource.listOfAllAuthors:
-                if searchLower in author.surname.lower() or author.given_name.lower():
+            searchLower = search_text.lower()
+            for author in self.listOfAllAuthors:
+                if searchLower in author.surname.lower() or searchLower in author.given_name.lower():
                     authorList.append(author)
 
-        authorList.sort(key=lambda auth: (auth.suname, auth.given_name))
-        # sort result List alphabetically
-            #if last names are equal, sort by given name
+        authorList.sort(key=lambda auth: (auth.surname, auth.given_name))
 
+        for author in authorList:
+            print(author.given_name + ' ' +author.surname) #Question: by 'return' do you actually mean print it out?
         return authorList
 
 
@@ -122,14 +123,14 @@ class BooksDataSource:
                             or 'title', just do the same thing you would do for 'title')
         '''
         bookList = []
-        searchLower = search_text.lower()
 
-        if searchLower == '':
-            bookList = BooksDataSource.listOfAllBooks
+        if search_text == None:
+            bookList = self.listOfAllBooks
         # search text is none, return all book objects -- sorted alphabetically
 
         else:
-            for book in BooksDataSource.listOfAllBooks:
+            searchLower = search_text.lower()
+            for book in self.listOfAllBooks:
                 if searchLower in book.title.lower():
                     bookList.append(book)
 
@@ -139,7 +140,8 @@ class BooksDataSource:
         else: #otherwise it is null or title or random string, so do by title
             bookList.sort(key=lambda book: (book.title, book.publication_year))
 
-
+        for book in bookList:  #Question: by 'return' do you actually mean print it out?
+            print(book.title)
         return bookList
 
 
@@ -156,20 +158,22 @@ class BooksDataSource:
         '''
 
         bookList = []
-        if start_year == '': #because we instantiated publication_year as int
+        if start_year == None: #because we instantiated publication_year as int
             startYearInt = 0 #out of range of list
         else:
             startYearInt = int(start_year)
 
-        if end_year == '': #because we instantiated publication_year as int
+        if end_year == None: #because we instantiated publication_year as int
             endYearInt = 2050 #out of range of list
         else:
             endYearInt = int(end_year)
 
-        for book in BooksDataSource.listOfAllBooks:
+        for book in self.listOfAllBooks:
             if startYearInt <= book.publication_year <= endYearInt:
                 bookList.append(book)
 
         bookList.sort(key=lambda book: (book.publication_year, book.title))
-        return bookList
 
+        for book in bookList: #Question: by 'return' do you actually mean print it out?
+            print(str(book.publication_year) + ', ' + book.title)
+        return bookList
