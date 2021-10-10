@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 '''
+    Kitty Tyree and Sriya Konda
     booksdatasource.py
     Jeff Ondich, 21 September 2021
 
@@ -59,6 +60,7 @@ class BooksDataSource:
             pub_year = int(row[1])
             auth_string = row[2]
 
+            #Checks number of attributes and creates Author object according to number of attributes given: 3 if the author doesn't have a death year and 4 if the author does have a death year
             authorAttributes = auth_string.split(' ')
             if len(authorAttributes) == 3:
                 authorFirstName, authorLastName, authorYearsString = authorAttributes[0], authorAttributes[1], authorAttributes[2]
@@ -83,7 +85,7 @@ class BooksDataSource:
                 self.listOfAllBooks.append(bookObject)
             # add bookObject to listOfAllBooks
 
-        file.close
+        file.close()
 
 
     def authors(self, search_text=None):
@@ -104,8 +106,8 @@ class BooksDataSource:
 
         authorList.sort(key=lambda auth: (auth.surname, auth.given_name))
 
-        for author in authorList:
-            print(author.given_name + ' ' +author.surname) #Question: by 'return' do you actually mean print it out?
+        #for author in authorList:
+         #   print(author.given_name + ' ' +author.surname) #Question: by 'return' do you actually mean print it out?
         return authorList
 
 
@@ -140,8 +142,8 @@ class BooksDataSource:
         else: #otherwise it is null or title or random string, so do by title
             bookList.sort(key=lambda book: (book.title, book.publication_year))
 
-        for book in bookList:  #Question: by 'return' do you actually mean print it out?
-            print(book.title)
+        #for book in bookList:  #Question: by 'return' do you actually mean print it out?
+         #   print(book.title)
         return bookList
 
 
@@ -174,6 +176,6 @@ class BooksDataSource:
 
         bookList.sort(key=lambda book: (book.publication_year, book.title))
 
-        for book in bookList: #Question: by 'return' do you actually mean print it out?
-            print(str(book.publication_year) + ', ' + book.title)
+        #for book in bookList: #Question: by 'return' do you actually mean print it out?
+         #   print(str(book.publication_year) + ', ' + book.title)
         return bookList
