@@ -1,12 +1,13 @@
 NAME
-     ftitle -- search for books by title
+     title -- search for books by title
 
 SYNOPSIS
-     ftitle [-year | -alpha] [S]
+     title [-year | -alpha] [S]
 
 DESCRIPTION
 
      Print a list of books whose titles contain a case-insensitive search string S.
+     Must input 'None' if no input is wished to be put in. 
 
      The following options are available:
 
@@ -24,16 +25,17 @@ ___________________________________________________________
 
 
 NAME
-     fauth -- find authors and their books
+     author -- find authors and their books
 
 SYNOPSIS
-     fauth [S]
+     author [S]
 
 DESCRIPTION
 
      Print a list of authors based on a case-insensitive search string S followed by the books they hae written.
      Authors will be printed in alphabetical order by surname.
      Ties will be broken by first names.
+     Must input 'None' if no input is wished to be put in. 
 
 DIAGNOSTICS
       If followed by flag [-h, -help], return this usage/help statement.
@@ -45,7 +47,7 @@ ___________________________________________________________
 
 
 NAME
-     fyears -- find books printed between years
+     between_years -- find books printed between years
 
 SYNOPSIS
      fyears [A][B]
@@ -53,6 +55,7 @@ SYNOPSIS
 DESCRIPTION
 
      Print a list of books published in and between years A and B.
+     Must input 'None' if no input is wished to be put in. 
 
 DIAGNOSTICS
      If followed by flag [-h, -help], return this usage/help statement.
