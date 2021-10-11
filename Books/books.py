@@ -21,13 +21,13 @@ def main()
   parser = argparse.ArgumentParser(description='Search for books based on different specifications')
   mainFunctionGroup = parser.add_mutually_exclusive_group()
 
-  mainFunctionGroup.add_argument('--ftitle', metavar='SEARCH_TEXT', help="Search for books by title", #use to specify which command-line options the program is willing to accept.
+  mainFunctionGroup.add_argument('--title', metavar='SEARCH_TEXT', help="Search for books by title", #use to specify which command-line options the program is willing to accept.
                     type=str)
 
-  mainFunctionGroup.add_argument('--fauth', metavar='SEARCH_TEXT', help="Search for books by author", #use to specify which command-line options the program is willing to accept.
+  mainFunctionGroup.add_argument('--author', metavar='SEARCH_TEXT', help="Search for books by author", #use to specify which command-line options the program is willing to accept.
                     type=str)
 
-  mainFunctionGroup.add_argument('--fyears', metavar='YEAR', help="Search for books by publication year", #use to specify which command-line options the program is willing to accept.
+  mainFunctionGroup.add_argument('--between_years', metavar='YEAR', help="Search for books by publication year", #use to specify which command-line options the program is willing to accept.
                     type=str, nargs=2)
 
   searchGroup= parser.add_mutually_exclusive_group()
@@ -37,7 +37,7 @@ def main()
 
   args = parser.parse_args()
 
-  if args.ftitle: # call books
+  if args.title: # call books
       if args.year:
           list_books = data_source.books(args.ftitle, 'year')
           books_print(list_books)
@@ -45,11 +45,11 @@ def main()
           list_books = data_source.books(args.ftitle)
           books_print(list_books)
 
-  if args.fauth: #call authors
+  if args.author: #call authors
       list_authors = data_source.authors(args.fauth)
       authors_print(list_authors)
 
-  if args.fyears: #call books_between_years
+  if args.between_years: #call books_between_years
       if args.fyears[0] == 'None':
           start_year = None
       else:
