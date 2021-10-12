@@ -67,7 +67,7 @@ class BooksDataSource:
             elif len(authorAttributes) == 4:
                 authorFirstName, authorLastName, authorYearsString = authorAttributes[0], authorAttributes[1] + ' ' + authorAttributes[2], authorAttributes[3]
 
-# Need to implement something about the book that has 2 authors :)
+# Implementing a book with 2 authors
             # dealing with author Year
             authorYearsString.strip('('')')
             authorYears = authorYearsString.split('-')
@@ -106,8 +106,6 @@ class BooksDataSource:
 
         authorList.sort(key=lambda auth: (auth.surname, auth.given_name))
 
-        #for author in authorList:
-         #   print(author.given_name + ' ' +author.surname) #Question: by 'return' do you actually mean print it out?
         return authorList
 
 
@@ -142,8 +140,6 @@ class BooksDataSource:
         else: #otherwise it is null or title or random string, so do by title
             bookList.sort(key=lambda book: (book.title, book.publication_year))
 
-        #for book in bookList:  #Question: by 'return' do you actually mean print it out?
-         #   print(book.title)
         return bookList
 
 
@@ -176,6 +172,4 @@ class BooksDataSource:
 
         bookList.sort(key=lambda book: (book.publication_year, book.title))
 
-        #for book in bookList: #Question: by 'return' do you actually mean print it out?
-         #   print(str(book.publication_year) + ', ' + book.title)
         return bookList
