@@ -5,15 +5,15 @@ import argparse
 
 def books_print(titles):
     for book in titles:
-        print(book)
+        print(book.title)
 
 def authors_print(name)
     for author in name:
-        print(author)
+        print(author.given_name + " " + author.surname)
            
 def books_between_years_print(books_from_years):
     for book in books_from_years:
-        print(book)
+        print(book.title + ", " + book.publication_year)
         
 def main()
   data_source = booksdatasource.BooksDataSource('books1.csv')
