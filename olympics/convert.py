@@ -1,8 +1,8 @@
-``````````````````
-Sriya Konda 
-CS257 
-October 14 
-```````````````````
+'''
+    Sriya Konda
+    convert.py
+    Jeff Ondich, 14 October 2021
+'''
 
 import csv
 import athlete_events.csv
