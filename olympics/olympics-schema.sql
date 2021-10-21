@@ -28,6 +28,7 @@ CREATE TABLE
 olympics=# CREATE TABLE athlete_game (
 id integer,
 games text,
+year integer,  
 sport text,
 event text,
 medal text);
@@ -35,7 +36,7 @@ CREATE TABLE
 
 olympics=# CREATE TABLE medal (
 NOC text,
-gold int,
-silver int,
-bronze int);
+gold integer,
+silver integer,
+bronze integer);
 CREATE TABLE
