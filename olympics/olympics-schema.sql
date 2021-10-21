@@ -1,32 +1,32 @@
 olympics=# CREATE TABLE athlete (
-id SERIAL,
-full_name text;
+id integer,
+full_name text);
 CREATE TABLE
 
 olympics=# CREATE TABLE athlete_data (
-id SERIAL,
+id integer,
 sex text,
 age integer,
 height integer,
-weight integer);
-CREATE TABLE
+weight integer,
 team text);
 CREATE TABLE
 
 olympics=# CREATE TABLE team_NOC (
+NOC_id integer, 
 NOC text,
 team text);
 CREATE TABLE
 
-olympics-# CREATE TABLE game (
+olympics=# CREATE TABLE game (
 games text,
 year integer,
 season text,
 city text);
 CREATE TABLE
 
-olympics-# CREATE TABLE athlete_event (
-id SERIAL,
+olympics=# CREATE TABLE athlete_event (
+id integer,
 games text,
 sport text,
 event text,
