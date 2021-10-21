@@ -23,9 +23,9 @@ import csv
 # (1) Create a dictionary that maps athlete_id -> athlete_name
 #       and then save the results in athletes.csv
 athletes = {}
-original_data_file = open('athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-athletes_file = open('athletes.csv', 'w')
+athletes_file = open('/Users/sriyakonda/Desktop/athletes.csv', 'w')
 writer = csv.writer(athletes_file)
 heading_row = next(reader) # eat up and ignore the heading row of the data file
 for row in reader:
@@ -40,9 +40,9 @@ athletes_file.close()
 # (2) Create a dictionary that maps event_name -> event_id
 #       and then save the results in events.csv
 events = {}
-original_data_file = open('athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-events_file = open('events.csv', 'w')
+events_file = open('/Users/sriyakonda/Desktop/events.csv', 'w')
 writer = csv.writer(events_file)
 heading_row = next(reader) # eat up and ignore the heading row of the data file
 for row in reader:
@@ -57,9 +57,9 @@ events_file.close()
 
 # (3) For each row in the original athlete_events.csv file, build a row
 #       for our new event_results.csv table
-original_data_file = open('athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-event_results_file = open('event_results.csv', 'w')
+event_results_file = open('/Users/sriyakonda/Desktop/event_results.csv', 'w')
 writer = csv.writer(event_results_file)
 heading_row = next(reader) # eat up and ignore the heading row of the data file
 for row in reader:
@@ -75,9 +75,9 @@ event_results_file.close()
 #Creates a csv file with all assocaited athlete data
     #For each row in original athlete_events.csv file,
     #build a row of new athlete_data.csv
-original_data_file = open('athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-athlete_data_file = open('athlete_data.csv', 'w')
+athlete_data_file = open('/Users/sriyakonda/Desktop/athlete_data.csv', 'w')
 writer = csv.writer(athlete_data_file)
 heading_row = next(reader)
 for row in reader:
@@ -86,6 +86,18 @@ for row in reader:
     athlete_age = row[3]
     athlete_height = row[4]
     athlete_weight = row[5]
+    if athlete_age == "NA":
+        athlete_age = 'NULL'
+    #else:
+    #    athlete_age = row[3]
+    if athlete_height == "NA":
+        athlete_height = 'NULL'
+    #else:
+    #    athlete_height = row[4]
+    if athlete_weight == "NA":
+        athlete_weight = 'NULL'
+    #else:
+    #    athlete_weight = row[5]
     athlete_team = row[6]
     writer.writerow([athlete_id, athlete_sex, athlete_age, athlete_height, athlete_weight, athlete_team])
 original_data_file.close()
@@ -98,9 +110,9 @@ athlete_data_file.close()
     #build a row of new team_NOC.csv
 NOCs = {}
 list_all_NOCs = []
-second_data_file = open('noc_regions.csv', 'r')
+second_data_file = open('/Users/sriyakonda/Desktop/noc_regions.csv', 'r')
 reader = csv.reader(second_data_file)
-team_NOC_file = open('team_NOC.csv', 'w')
+team_NOC_file = open('/Users/sriyakonda/Desktop/team_NOC.csv', 'w')
 writer = csv.writer(team_NOC_file)
 heading_row = next(reader)
 for row in reader:
@@ -126,9 +138,9 @@ gold_metals = {}
 silver_metals = {}
 bronze_metals = {}
 #original_data_file = open('test.csv', 'r')
-original_data_file = open('athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-medal_file = open('medal.csv', 'w')
+medal_file = open('/Users/sriyakonda/Desktop/medal.csv', 'w')
 writer = csv.writer(medal_file)
 heading_row = next(reader)
 for row in reader:
@@ -157,9 +169,9 @@ medal_file.close()
 #Creates a csv file with all the athlete ids and all realted details to their sport/game/event
     #For each row in original athlete_events.csv file,
     #build a row of new athlete_game.csv
-original_data_file = open('athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-athlete_game_file = open('athlete_game.csv', 'w')
+athlete_game_file = open('/Users/sriyakonda/Desktop/athlete_game.csv', 'w')
 writer = csv.writer(athlete_game_file)
 heading_row = next(reader)
 for row in reader:
@@ -169,6 +181,16 @@ for row in reader:
     athlete_sport = row[12]
     athlete_event = row[13]
     athlete_medal = row[14]
+    if athlete_games == "NA":
+        athlete_games = 'NULL'
+    if athlete_year == "NA":
+        athlete_year = 'NULL'
+    if athlete_sport == "NA":
+        athlete_sport = 'NULL'
+    if athlete_event == "NA":
+        athlete_event = 'NULL'
+    if athlete_medal == "NA":
+        athlete_medal = 'NULL'
     writer.writerow([athlete_id, athlete_games, athlete_year, athlete_sport, athlete_event, athlete_medal])
 original_data_file.close()
 athlete_game_file.close()
@@ -177,9 +199,9 @@ athlete_game_file.close()
 #Creates a csv file with basic information about all olymic games
     #For each row in original athlete_events.csv file,
     #build a row of new games.csv
-original_data_file = open('athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-games_file = open('games.csv', 'w')
+games_file = open('/Users/sriyakonda/Desktop/games.csv', 'w')
 writer = csv.writer(games_file)
 heading_row = next(reader)
 for row in reader:
