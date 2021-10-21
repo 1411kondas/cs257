@@ -7,8 +7,8 @@ olympics=# CREATE TABLE athlete_data (
 id integer,
 sex text,
 age integer,
-height integer,
-weight integer,
+height float,
+weight float,
 team text);
 CREATE TABLE
 
@@ -25,7 +25,7 @@ season text,
 city text);
 CREATE TABLE
 
-olympics=# CREATE TABLE athlete_event (
+olympics=# CREATE TABLE athlete_game (
 id integer,
 games text,
 sport text,
