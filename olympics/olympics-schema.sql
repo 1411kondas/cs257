@@ -1,26 +1,21 @@
 olympics=# CREATE TABLE athlete (
 id SERIAL,
-last_name text,
-first_name text);
+full_name text;
 CREATE TABLE
 
-olympics=# CREATE TABLE athlete_biodata (
+olympics=# CREATE TABLE athlete_data (
 id SERIAL,
 sex text,
 age integer,
 height integer,
 weight integer);
 CREATE TABLE
-
-olympics=# CREATE TABLE athlete_team (
-id SERIAL,
-team text,
-NOC text);
+team text);
 CREATE TABLE
 
-olympics=# CREATE TABLE region_NOC (
+olympics=# CREATE TABLE team_NOC (
 NOC text,
-region text);
+team text);
 CREATE TABLE
 
 olympics-# CREATE TABLE game (
@@ -40,17 +35,6 @@ CREATE TABLE
 
 olympics=# CREATE TABLE medal (
 NOC text,
-gold int,
-silver int,
-bronze int);
-CREATE TABLE
-
-olympics=# CREATE TABLE athlete_medal (
-id SERIAL,
-game text,
-year integer,
-sport text,
-event text,
 gold int,
 silver int,
 bronze int);
