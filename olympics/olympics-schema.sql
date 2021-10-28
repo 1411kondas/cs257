@@ -19,8 +19,8 @@ team text);
 CREATE TABLE
 
 olympics=# CREATE TABLE game (
-games text,
-games_id integer,   
+games_id integer, 
+games text,   
 year integer,
 season text,
 city text);
