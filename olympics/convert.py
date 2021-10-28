@@ -200,7 +200,7 @@ athlete_game_file.close()
     #For each row in original athlete_events.csv file,
     #build a row of new games.csv
 game_all = {}
-original_data_file = open('/Users/sriyakonda/Desktop/cs257/athlete_events.csv', 'r')
+original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
 games_file = open('/Users/sriyakonda/Desktop/cs257/games.csv', 'w')
 writer = csv.writer(games_file)
