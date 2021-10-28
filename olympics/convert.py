@@ -199,9 +199,10 @@ athlete_game_file.close()
 #Creates a csv file with basic information about all olymic games
     #For each row in original athlete_events.csv file,
     #build a row of new games.csv
-original_data_file = open('/Users/sriyakonda/Desktop/athlete_events.csv', 'r')
+game_all = {}
+original_data_file = open('/Users/sriyakonda/Desktop/cs257/athlete_events.csv', 'r')
 reader = csv.reader(original_data_file)
-games_file = open('/Users/sriyakonda/Desktop/games.csv', 'w')
+games_file = open('/Users/sriyakonda/Desktop/cs257/games.csv', 'w')
 writer = csv.writer(games_file)
 heading_row = next(reader)
 for row in reader:
@@ -209,6 +210,9 @@ for row in reader:
     year = row[9]
     season = row[10]
     city = row[11]
-    writer.writerow([game, year, season, city])
+    if game not in game_all:
+        game_id = len(game_all) + 1
+        game_all[game] = game_id
+        writer.writerow([game_id, game, year, season, city])
 original_data_file.close()
 games_file.close()
